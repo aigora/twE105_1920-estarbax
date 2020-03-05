@@ -9,6 +9,7 @@ Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
 Joshua Guila Valderueda. - Joshgv25
 
 Eloy Isidro Vitores. - Eloy-Isidro
+Solomiya Havryshko. - solomiyahav
 
 ## Objetivos del trabajo
 
