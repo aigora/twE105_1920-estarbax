@@ -7,6 +7,7 @@ Descripción breve del proyecto a realizar (2-3 frases).
 Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
 
 Joshua Guila Valderueda. - Joshgv25
+Eloy Isidro Vitores. - Eloy-Isidro
 
 ## Objetivos del trabajo
 
