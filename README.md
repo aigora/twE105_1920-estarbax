@@ -1,6 +1,6 @@
-# Título del trabajo
+# COMETELCOCO
 
-Descripción breve del proyecto a realizar (2-3 frases).
+Recreaccion de juego popular.
 
 ## Integrantes del equipo
 
@@ -13,5 +13,5 @@ Eloy Isidro Vitores. - Eloy-Isidro
 Solomiya Havryshko. - solomiyahav
 
 ## Objetivos del trabajo
+El objetivo principal del proyecto será rehacer el juego del comecocos;por supuesto, dándole nuestro toque personal.
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
