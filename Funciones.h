@@ -26,5 +26,6 @@ int contador(char matriz[][ANC],char k);
 int cuadrante(emplazamiento pos);
 int ultimo_comprobante(int tecla,char mat[][ANC],emplazamiento pos);
 void menu(int a);
+void borrar();
 
 
