@@ -56,7 +56,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 						matrix[vect[t].y][vect[t].x]='#';
 					}
 										
-					system("cls");
+					borrar();
 					
 					imprimirmatriz(matrix);
 						
@@ -94,7 +94,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					}
 					
 					
-					system("cls");
+					borrar();
 					
 					imprimirmatriz(matrix);
 					
@@ -139,7 +139,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					}
 					
 					
-					system("cls");
+					borrar();
 					
 					imprimirmatriz(matrix);
 					
@@ -182,7 +182,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 						matrix[vect[t].y][vect[t].x]='#';
 					}
 					
-					system("cls");
+					borrar();
 					
 					imprimirmatriz(matrix);	
 					
@@ -206,26 +206,26 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 		dir=15;
 		while(dir!=72+256 && dir!=80+256 && dir!=77+256 && dir!=75+256 && dir!=113) //Q = 81;  q = 113; 113-81=32;
 		{
-			dir=getch(); 		//aquí tiene que recoger la nueva tecla.
+			dir=getch(); 		//aquÃ­ tiene que recoger la nueva tecla.
 			if(dir == 0 || dir == 224)
 			{
 				dir = 256 + getch();
 			}
-			else if(dir == 81)	//si es la Q (mayúscula)
+			else if(dir == 81)	//si es la Q (mayÃºscula)
 			{
-				dir=strdown(dir); //la hace q(minúscula)
+				dir=strdown(dir); //la hace q(minÃºscula)
 			}
 			
 		}
 		if(ultimo_comprobante(dir,matrix,pos)) //con este condicional hacemos que se reduzcan considerablemente las trampas
 		{									   //si estas yendo hacia la derecha y quieres parar para pensar mejor la jugada,(si hay pared arriba)
-			dir=aux;						   //antes se podía dar hacia arriba y se paraba; ahora con la función ultimo_comprobante() no; porque comprueba (en este ejemplo)
-		}										// si tenias pared arriba, si es así, este condicional se 'activa', y dir recupera su valor anterior que estaba almacenado en aux.
-		i++;//contador de pulsaciones													por tanto, el juego es más fluido (dentro de lo que cabe(system("cls") :(  ))
+			dir=aux;						   //antes se podÃ­a dar hacia arriba y se paraba; ahora con la funciÃ³n ultimo_comprobante() no; porque comprueba (en este ejemplo)
+		}										// si tenias pared arriba, si es asÃ­, este condicional se 'activa', y dir recupera su valor anterior que estaba almacenado en aux.
+		i++;//contador de pulsaciones													por tanto, el juego es mÃ¡s fluido (dentro de lo que cabe(system("cls") :(  ))
 		
-		loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);	//es una función recursiva		
+		loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);	//es una funciÃ³n recursiva		
 	}
-	else			// si se pulsa q, se accede al menú de pause
+	else			// si se pulsa q, se accede al menÃº de pause
 	{
 		printf("Al pulsar la tecla q, ha accedido al men%c de pause \n",163);
 		menu(0);
@@ -256,7 +256,7 @@ void mueveMalos(emplazamiento vect[],char matriz[][ANC],int regist[],int z)
 					}	
 					else		//en caso contrario
 					{		
-						matriz[vect[i].y][vect[i].x]=' '; //déjalo vacío
+						matriz[vect[i].y][vect[i].x]=' '; //dÃ©jalo vacÃ­o
 					}					
 					vect[i].y-=1;
 					
@@ -337,7 +337,7 @@ void mueveMalos(emplazamiento vect[],char matriz[][ANC],int regist[],int z)
 				}
 				break;
 			default:
-				printf("No salió bien\n");
+				printf("No saliÃ³ bien\n");
 				break;					
 		}
 	}
@@ -386,7 +386,7 @@ int aleatorio(int q,int r)
 	
 }
 
-int strdown(int c) //convierte el ASCII de una letra mayúscula en su forma minúscula
+int strdown(int c) //convierte el ASCII de una letra mayÃºscula en su forma minÃºscula
 {
 	int min; 
 	int i='a'-'A'; //i=32
@@ -403,7 +403,7 @@ int comprobante(char matriz[][ANC],char com)
 	{
 		for(n=0;n<ANC;n++)
 		{
-			if(matriz[i][n]== com)	//comprueba si D está en algúna celda de la matriz
+			if(matriz[i][n]== com)	//comprueba si D estÃ¡ en algÃºna celda de la matriz
 			{
 				k=0;	
 			}
@@ -421,7 +421,7 @@ int contador(char matriz[][ANC],char k)
 	{
 		for(n=0;n<ANC;n++)
 		{
-			if(matriz[i][n]== k)	/////	cuanta cuantas veces está cierto elemento en la matriz mapa
+			if(matriz[i][n]== k)	/////	cuanta cuantas veces estÃ¡ cierto elemento en la matriz mapa
 			{
 				cont++;	
 			}
@@ -543,7 +543,7 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 		while((p!=1) || (mini_cad[0]<48 || mini_cad[0]>57) || (mini_cad[0]!=49 && mini_cad[0]!=50 && mini_cad[0]!=51));
 		
 		
-														///////////////////// PARTE DEL MENÚ (MEJORAR)
+														///////////////////// PARTE DEL MENÃš (MEJORAR)
 		
 			switch(mini_cad[0])
 			{
@@ -562,4 +562,14 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 	}	
 	system("color 03");	
 }
+
+void borrar()
+{
+  #ifdef _WIN32
+    system("cls");
+  #else
+    printf("\033[2J");
+  #endif
+}
+
 
