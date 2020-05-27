@@ -229,7 +229,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 	{
 		printf("Al pulsar la tecla q, ha accedido al men%c de pause \n",163);
 		menu(0);
-		system("cls");
+		borrar();
 		printf("EL JUEGO CONTIN%cA \n",233);
 		sleep(2);
 		dir=right;
