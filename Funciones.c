@@ -552,6 +552,7 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 					break;
 				case '2':
 					printf("Accede a las instrucciones \n");
+					instrucciones();
 					final=1;
 					break;
 				case '3':
@@ -562,7 +563,26 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 	}	
 	system("color 03");	
 }
-
+void instrucciones()
+{
+		FILE *g;
+	char x, cad[N];
+	int i=0;
+	g=fopen("instrucciones.txt","r");
+	if(g==NULL)
+	{
+		printf("No se ha podido abrir el fichero\n");
+		exit(-1);
+		
+	}
+	while(fscanf(g,"%c",&x)!=EOF)
+	{
+		cad[i]=x;
+		i++;	
+	}
+	printf("%s",cad);
+	fclose(g);	
+}
 void borrar()
 {
   #ifdef _WIN32
