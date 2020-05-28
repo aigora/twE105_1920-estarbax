@@ -14,6 +14,14 @@ typedef struct
 	int nivel;
 }map_prop;
 
+typedef struct
+{
+    char nombre [30];
+    int puntuacion;
+    
+}usuario;
+
+
 int ascii(char letra);
 void imprimirmatriz(char mat[][ANC]);
 int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i,int regist[],int frutas_iniciales,map_prop *p);
