@@ -369,7 +369,7 @@ system("pause");
    
     while (fscanf(pc,"%c",&r)!=EOF)
     {
-        if(r=='\n')
+        if(r=='\n') //contamos el número de líneas del fichero 
             ++cuantosJugadores;
     }
     usuario jugador[cuantosJugadores+1];
