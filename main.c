@@ -78,15 +78,13 @@ int main(){
 	
 	contador_frutas1=contador(mat1,'o');
 	contador_frutas2=contador(mat2,'o');
-	contador_frutas3=contador(mat3,'o');
-	
-	system("color 03");	
+	contador_frutas3=contador(mat3,'o');	
 	
 	menu(1);	///////		MENÚ DE INICIO
-    
-    
-    printf("Escriba su nombre. Ten en cuenta que si juegas con un nombre que ya se ha usado se actualizará atutomáticamente su puntuación en la clasificación si se diera el caso de que fuera mayor la que consiguiera");
-    scanf("%s", sesion.nombre);
+   
+	
+	printf("Escriba su nombre. Ten en cuenta que si juegas con un nombre que ya se ha usado se actualizará atutomáticamente su puntuación en la clasificación si se diera el caso de que fuera mayor la que consiguiera");
+	scanf("%s", sesion.nombre);
 	
  	printf("Cargando.");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".\n");
 	printf("Solo quedan unos ultimos ajustes, espere un momento\n");sleep(4);	
