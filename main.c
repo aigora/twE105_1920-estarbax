@@ -16,9 +16,10 @@ int main(){
 	int cont = 0,i,n,dir,regist[N],midemapa,teclazos=0,vidas=3;
 	int contador_frutas1,contador_frutas2,contador_frutas3;
 	map_prop temporal;  // almacenará temporalmente lo que deuelvan las funciones loop
-	_Bool final=1; //finalizar el bucle while
-	FILE *pf;
+	_Bool final=1;//finalizar el bucle while
+	FILE *pf, *pc;
 	emplazamiento pos,malos1,malos2,malos3,malos4,malos5,malos6;
+    usuario sesion;
 		
 	pf = fopen("fichero.txt","r");
 	if(pf == NULL)
@@ -82,6 +83,10 @@ int main(){
 	system("color 03");	
 	
 	menu(1);	///////		MENÚ DE INICIO
+    
+    
+    printf("Escriba su nombre. Ten en cuenta que si juegas con un nombre que ya se ha usado se actualizará atutomáticamente su puntuación en la clasificación si se diera el caso de que fuera mayor la que consiguiera");
+    scanf("%s", sesion.nombre);
 	
  	printf("Cargando.");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".\n");
 	printf("Solo quedan unos ultimos ajustes, espere un momento\n");sleep(4);	
@@ -270,11 +275,196 @@ switch(midemapa)
 		break;
 }
 
-system("pause");	
+system("pause");
+    
+    
+    int puntos=0; //puntos al principio del juego
+    const int puntmap= 5000; // puntos que se obtienen al avanzar de mapa
+    
+    if (midemapa==0)
+    {
+        puntos=50*contfruta1;
+    }
+    else if (midemapa==1)
+    {
+        if (teclazos<=50)
+        {
+            puntos=500*contfruta1 + puntmap - 10*teclazos;
+        }
+        else if (teclazos>50 && teclazos<=100)
+        {
+            puntos=200*contfruta1 + puntmap - 10*teclazos;
+        }
+        else if (teclazos>100 && teclazos<=200)
+        {
+            puntos= 150*contfruta1 + puntmap - 10*teclazos;
+        }
+        else if (teclazos>200 && teclazos<=300)
+        {
+            puntos=100*contfruta1 + puntmap - 10*teclazos;
+        }
+        else (teclazos>300)
+        {
+            puntos= puntmap - 10*teclazos;
+        }
+    }
+    
+    else if(midemapa==2)
+    {
+        if (teclazos<=100)
+        {
+            puntos=500*contfruta1 + 500*contfruta2 + 2*puntmap - 10*teclazos;
+        }
+        else if (teclazos>100 && teclazos<=200)
+        {
+            puntos=200*contfruta1 + 200*contfruta2 + 2*puntmap - 10*teclazos;
+        }
+        else if (teclazos>200 && teclazos<=400)
+        {
+            puntos=150*contfruta1 + 150*contfruta2 + 2*puntmap - 10*teclazos;
+        }
+        else if (teclazos>400 && teclazos<=600)
+        {
+            puntos=100*contfruta1 + 100*contfruta2  + 2*puntmap - 10*teclazos;
+        }
+        else (teclazos>600)
+        {
+        puntos=2*puntmap - 10*teclazos;
+        }
+    }
+    else
+    {
+        if (teclazos<=150)
+        {
+            puntos=500*contfruta1 + 500*contfruta2 + 500*contfruta3 + 3*puntmap - 10*teclazos;
+        }
+        else if (teclazos>150 && teclazos<=300)
+        {
+            puntos=200*contfruta1 + 200*contfruta2 + 200*contfruta3 + 3*puntmap - 10*teclazos;
+        }
+        else if (teclazos>300 && teclazos<=600)
+        {
+            puntos=150*contfruta1 + 150*contfruta2 + 150*contfruta3 + 3*puntmap - 10*teclazos;
+        }
+        else if (teclazos>600 && teclazos<=900)
+        {
+            puntos=100*contfruta1 + 100*contfruta2 + 100*contfruta3 + 3*puntmap - 10*teclazos;
+        }
+        else (teclazos>900)
+        {
+            puntos=3*puntmap - 10*teclazos;
+        }
+    }
+    
+    
+    int u,v,alm,cuantosJugadores=0;
+    char r;
+    
+    pc=fopen("Clasificacion.txt", "r");
+    if(pc==NULL)
+    {
+        printf("No se ha podido abrir fichero\n");
+        exit (-1);
+    }
+   
+    while (fscanf(pc,"%c",&r)!=EOF)
+    {
+        if(r=='\n')
+            ++cuantosJugadores;
+    }
+    usuario jugador[cuantosJugadores+1];
+    rewind(pc);
+    
+    for(u=0;u<cuantosJugadores;u++)
+    {
+        fscanf(pc,"#%i %s, puntuación:%i\n",&(u+1),&jugador[u].nombre,&jugador[u].puntuacion)
+    }
+    fclose(pc);
+    int indicador=0;
+   
+    
+    for(u=0;u<cuantosJugadores;u++)
+    {
+        if(strcmp(sesion.nombre, jugador[u].nombre)==0)
+        {
+            indicador=1;
+            if(puntos > jugador[u].puntuacion)
+            {
+                jugador[u]=sesion;
+            }
+         
+            
+        }
+    }
+   if(indicador==0)
+   {
+       jugador[cuantosJugadores+1]=sesion;
+   }
+    
+    
+    switch(indicador)
+    {
+        case 0:
+            for(u=0;u<cuantosJugadores+1;u++)
+               {
+                   for(v=u+1;v<cuantosJugadores+1;v++)
+                   {
+                       if(jugador[u].puntuacion < jugador[v].puntuacion)
+                       
+                       {
+                       alm=jugador[u];
+                       jugador[u]=jugador[v];
+                       jugador[v]=alm;
+                       }
+                   }
+               }
+               
+               
+            break;
+        case 1:
+            for(u=0;u<cuantosJugadores;u++)
+               {
+                   for(v=u+1;v<cuantosJugadores;v++)
+                   {
+                       if(jugador[u].puntuacion < jugador[v].puntuacion)
+                       
+                       {
+                       alm=jugador[u];
+                       jugador[u]=jugador[v];
+                       jugador[v]=alm;
+                       }
+                   }
+               }
+               
+               
+            break;
+    }
+    pc=fopen("Clasificacion.txt", "w");
+    switch(indicador)
+    {
+        case 0:
+            
+              for(u=0;u<cuantosJugadores+1;u++)
+              {
+                  fprintf(pc,"#%i %s, puntuación:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+              }
+              
+            break;
+        case 1:
+            for(u=0;u<cuantosJugadores;u++)
+            {
+                fprintf(pc,"#%i %s, puntuación:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+            }
+            
+            break;
+    }
+    fclose(pc);
 	
 	
 	return 0;	
 }
+
+
 
 
 
