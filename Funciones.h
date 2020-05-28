@@ -36,6 +36,7 @@ int ultimo_comprobante(int tecla,char mat[][ANC],emplazamiento pos);
 void menu(int a);
 void instrucciones();
 void borrar();
+void color(int a);
 
 
 
