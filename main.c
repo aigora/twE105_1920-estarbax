@@ -489,13 +489,15 @@ system("pause");
     
     char micadena[cuantosJugadores*40];
     
+    strcpy(micadena,"");	//empieza siendo una cadena vacía
+    
     pc=fopen("Clasificacion.txt","r");
     if(pc==NULL)
     {
     	printf("No se pudo abrir el fichero \n");
     	exit(-1);
-	}
-	u=0;
+     }
+     u=0;
 	while(fscanf(pc,"%c",&r)!=EOF)
 	{
 		micadena[u]=r;
