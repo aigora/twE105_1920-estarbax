@@ -1,5 +1,8 @@
 #define ANC 58  // ancho de la matriz
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct
 {
