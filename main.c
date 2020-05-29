@@ -302,7 +302,7 @@ system("pause");
     
     
     int puntos=0; //puntos al principio del juego
-    const int puntmap= 5000; // puntos que se obtienen al avanzar de mapa
+    const int puntmap= 50000; // puntos que se obtienen al avanzar de mapa
     
     if (midemapa==0)
     {
@@ -310,19 +310,19 @@ system("pause");
     }
     else if (midemapa==1)
     {
-        if (teclazos<=50)
+        if (teclazos<=150)
         {
             puntos=500*contfruta1 + puntmap - 10*teclazos;
         }
-        else if (teclazos>50 && teclazos<=100)
+        else if (teclazos>150 && teclazos<=250)
         {
             puntos=200*contfruta1 + puntmap - 10*teclazos;
         }
-        else if (teclazos>100 && teclazos<=200)
+        else if (teclazos>250 && teclazos<=350)
         {
             puntos= 150*contfruta1 + puntmap - 10*teclazos;
         }
-        else if (teclazos>200 && teclazos<=300)
+        else if (teclazos>350 && teclazos<=500)
         {
             puntos=100*contfruta1 + puntmap - 10*teclazos;
         }
@@ -334,19 +334,19 @@ system("pause");
     
     else if(midemapa==2)
     {
-        if (teclazos<=100)
+        if (teclazos<=300)
         {
             puntos=500*contfruta1 + 500*contfruta2 + 2*puntmap - 10*teclazos;
         }
-        else if (teclazos>100 && teclazos<=200)
+        else if (teclazos>300 && teclazos<=500)
         {
             puntos=200*contfruta1 + 200*contfruta2 + 2*puntmap - 10*teclazos;
         }
-        else if (teclazos>200 && teclazos<=400)
+        else if (teclazos>500 && teclazos<=700)
         {
             puntos=150*contfruta1 + 150*contfruta2 + 2*puntmap - 10*teclazos;
         }
-        else if (teclazos>400 && teclazos<=600)
+        else if (teclazos>700 && teclazos<=1000)
         {
             puntos=100*contfruta1 + 100*contfruta2  + 2*puntmap - 10*teclazos;
         }
@@ -357,19 +357,19 @@ system("pause");
     }
     else
     {
-        if (teclazos<=150)
+        if (teclazos<=450)
         {
             puntos=500*contfruta1 + 500*contfruta2 + 500*contfruta3 + 3*puntmap - 10*teclazos;
         }
-        else if (teclazos>150 && teclazos<=300)
+        else if (teclazos>450 && teclazos<=750)
         {
             puntos=200*contfruta1 + 200*contfruta2 + 200*contfruta3 + 3*puntmap - 10*teclazos;
         }
-        else if (teclazos>300 && teclazos<=600)
+        else if (teclazos>750 && teclazos<=1050)
         {
             puntos=150*contfruta1 + 150*contfruta2 + 150*contfruta3 + 3*puntmap - 10*teclazos;
         }
-        else if (teclazos>600 && teclazos<=900)
+        else if (teclazos>1050 && teclazos<=1500)
         {
             puntos=100*contfruta1 + 100*contfruta2 + 100*contfruta3 + 3*puntmap - 10*teclazos;
         }
