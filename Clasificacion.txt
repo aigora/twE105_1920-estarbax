@@ -1,1 +1,2 @@
-#1|eloy_oficial,puntuacion:9999999999999
+#1|eloy_oficial,puntuacion:123456
+#2|solomiya,puntuacion:850
