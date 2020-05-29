@@ -78,7 +78,8 @@ int main(){
 	
 	menu(1);	///////		MENU DE INICIO
    
-
+        fflush(stdin);	//hay que limpiar el buffer (indispensable)
+	
 	printf("Escriba su nombre. Tenga en cuenta que si juega con un nombre que ya se ha usado se actualizara atutomaticamente \nsu puntuacion en la clasificacion si se diera el caso de que fuera mayor la que consiguiese \n");
 	do
 	{
@@ -96,9 +97,9 @@ int main(){
 	
  	printf("Cargando.");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".\n");
 	printf("Solo quedan unos ultimos ajustes, espere un momento\n");sleep(3);	
-	printf("Ya esta; pulse cualquiera de las teclas direccionales para empezar \n");
+	printf("Ya esta; pulse una tecla para empezar \n");
 	
-	while(!kbhit())		// bucle que se ejecutara infinitamente hasta que no su pulse alguna de las teclas direccionales
+	while(!kbhit())		// bucle que se ejecutara infinitamente hasta que se pulse alguna tecla
 	{		
 	}         
 															
@@ -160,7 +161,9 @@ int main(){
 				a++;
 				
 				printf("VIDAS RESTANTES: %d \n",vidas);
-				sleep(3);
+				sleep(1);
+				printf("Espere.....\n");
+				sleep(2);
 				
 				
 				break;				
@@ -210,7 +213,9 @@ int main(){
 				b++;
 				
 				printf("VIDAS RESTANTES: %d \n",vidas);
-				sleep(3);
+				sleep(1);
+				printf("Espere.....\n");
+				sleep(2);
 				
 				break;
 			case 2:
@@ -258,7 +263,9 @@ int main(){
 				c++;
 				
 				printf("VIDAS RESTANTES: %d \n",vidas);
-				sleep(3);
+				sleep(1);
+				printf("Espere.....\n");
+				sleep(2);
 				
 				break;
 			case 3:   // te has pasado el tercer y último mapa
@@ -298,7 +305,8 @@ switch(midemapa)
 		break;
 }
 
-system("pause");
+    printf("Espere unos instantes para consultar la clasificacion\n");
+    sleep(7);
     
     
     int puntos=0; //puntos al principio del juego
@@ -397,9 +405,13 @@ system("pause");
         if(r=='\n') //contamos el numero de lineas del fichero 
         {
         	cuantosJugadores++;
-		}            
-    }    
-	   
+	}            
+    }   
+
+    cuantosJugadores--;	//hay que restar una debido a que en el fichero hay un salto de línea de más
+	  
+    sleep(3);
+	
     usuario jugador[cuantosJugadores+1],alm;
     rewind(pc);
     
@@ -474,6 +486,10 @@ system("pause");
               for(u=0;u<cuantosJugadores+1;u++)
               {
                   fprintf(pc,"#%i|%s,puntuacion:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+		  if(u==cuantosJugadores)
+                  {
+                  	fprintf(pc,"\n");
+		  }
               }
               
             break;
@@ -481,6 +497,10 @@ system("pause");
             for(u=0;u<cuantosJugadores;u++)
             {
                 fprintf(pc,"#%i|%s,puntuacion:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+		if(u+1==cuantosJugadores)
+                {
+                	fprintf(pc,"\n");
+		}
             }
             
             break;
@@ -494,10 +514,10 @@ system("pause");
     pc=fopen("Clasificacion.txt","r");
     if(pc==NULL)
     {
-    	printf("No se pudo abrir el fichero \n");
-    	exit(-1);
-     }
-     u=0;
+	printf("No se pudo abrir el fichero \n");
+	exit(-1);
+	}
+	u=0;
 	while(fscanf(pc,"%c",&r)!=EOF)
 	{
 		micadena[u]=r;
@@ -505,7 +525,9 @@ system("pause");
 	}
 	borrar();
 	printf("ESTA ES LA CLASIFICACI%cN\n",224);
-	printf("%s",micadena);
+	printf("\n");
+	printf("%s\n",micadena);
+	printf("Gracias por jugar\n");
 	
 	
 	
