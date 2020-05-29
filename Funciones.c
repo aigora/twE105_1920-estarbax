@@ -45,22 +45,22 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 				while(matrix[pos.y-1][pos.x]!='=' && matrix[pos.y-1][pos.x]!='|' && matrix[pos.y-1][pos.x]!='/' && !kbhit())
 				{
 					z=cuadrante(pos);  // Determina en que cuadrante se encuentra nuestro personaje
-					matrix[pos.y][pos.x]=' ';	//Deja la posición en la que estaba nuestro personaje vacía		
-					pos.y-=1; 	//Cambia el valor de la posición de nuestro personaje (este caso -1 porque el usuario pulsó arriba)
+					matrix[pos.y][pos.x]=' ';	//Deja la posiciÃ³n en la que estaba nuestro personaje vacÃ­a		
+					pos.y-=1; 	//Cambia el valor de la posiciÃ³n de nuestro personaje (este caso -1 porque el usuario pulsÃ³ arriba)
 					
-					mueveMalos(vect,matrix,regist,z);	//función que reposiciona a los malos
+					mueveMalos(vect,matrix,regist,z);	//funciÃ³n que reposiciona a los malos
 					
 					matrix[pos.y][pos.x]='D';		//El elemento que corresponde a las nuevas coordenadas de nuestro personaje en el 
-													//símbolo de nuestro personaje ( D ) 
+													//sÃ­mbolo de nuestro personaje ( D ) 
 					
 					for(t=0;t<N;t++)		//bucle que hace que el elemento que corresponde a cada una de las coordenadas de los malos
 					{										// sea el ( # )
 						matrix[vect[t].y][vect[t].x]='#';
 					}
 										
-					borrar();	//función que borra la pantalla, gracias a esta función es posible crear los 'frames' del juego
+					borrar();	//funciÃ³n que borra la pantalla, gracias a esta funciÃ³n es posible crear los 'frames' del juego
 					
-					imprimirmatriz(matrix);		//función que imprime la nueva matriz por pantalla
+					imprimirmatriz(matrix);		//funciÃ³n que imprime la nueva matriz por pantalla
 						
 					if(comprobante(matrix,'D'))	//comprobante de si estamos muertos
 					{
@@ -204,32 +204,32 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					}					
 				}
 				break;
-		} //aquí termina el switch		 
-		dir=getch(); 		//aquí tiene que recoger la nueva tecla.
-		if(dir == 0 || dir == 224) // bug que ocurre con el código ascii de las teclas direccionales
+		} //aquÃ­ termina el switch		 
+		dir=getch(); 		//aquÃ­ tiene que recoger la nueva tecla.
+		if(dir == 0 || dir == 224) // bug que ocurre con el cÃ³digo ascii de las teclas direccionales
 		{
 			dir = 256 + getch();
 		}
-		else if(dir == 81)	//si es la Q (mayúscula)
+		else if(dir == 81)	//si es la Q (mayÃºscula)
 		{
-			dir=strdown(dir); //la hace q(minúscula)
+			dir=strdown(dir); //la hace q(minÃºscula)
 		}
 		if(dir!=72+256 && dir!=80+256 && dir!=77+256 && dir!=75+256 && dir!=113) //si la tecla pulsada no es ni las flechas ni q, 
-		{		//Q = 81;  q = 113; 113-81=32;									//la dirección vuelve a ser la de antes y se repite loop(...);
+		{		//Q = 81;  q = 113; 113-81=32;									//la direcciÃ³n vuelve a ser la de antes y se repite loop(...);
 			dir=aux;
 			loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);
 		}
 		
 		if(ultimo_comprobante(dir,matrix,pos)) //con este condicional hacemos que se reduzcan considerablemente las trampas
 		{									   //si estas yendo hacia la derecha y quieres parar para pensar mejor la jugada,(si hay pared arriba)
-			dir=aux;						   //antes se podía dar hacia arriba y se paraba; ahora con la función ultimo_comprobante() no; porque comprueba (en este ejemplo)
-		}										// si tenias pared arriba, si es así, este condicional se 'activa', y dir recupera su valor anterior que estaba almacenado en aux.
-		i++;//contador de pulsaciones													por tanto, el juego es más fluido 
+			dir=aux;						   //antes se podÃ­a dar hacia arriba y se paraba; ahora con la funciÃ³n ultimo_comprobante() no; porque comprueba (en este ejemplo)
+		}										// si tenias pared arriba, si es asÃ­, este condicional se 'activa', y dir recupera su valor anterior que estaba almacenado en aux.
+		i++;//contador de pulsaciones													por tanto, el juego es mÃ¡s fluido 
 		
 		
-		loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);	//es una función recursiva		
+		loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);	//es una funciÃ³n recursiva		
 	}
-	else	// si se pulsa q, se accede al menú de pause
+	else	// si se pulsa q, se accede al menÃº de pause
 	{
 		printf("Al pulsar la tecla q, ha accedido al men%c de pause \n",163);
 		menu(0);
@@ -239,7 +239,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 		dir=right;
 		loop(matrix,pos,dir,vect,i,regist,frutas_iniciales,p);
 	}		
-}//aquí termina la función loop();
+}//aquÃ­ termina la funciÃ³n loop();
 
 //funcion de movimiento de los malos
 void mueveMalos(emplazamiento vect[],char matriz[][ANC],int regist[],int z)
@@ -259,7 +259,7 @@ void mueveMalos(emplazamiento vect[],char matriz[][ANC],int regist[],int z)
 					}	
 					else	//en caso contrario
 					{		
-						matriz[vect[i].y][vect[i].x]=' '; //déjalo vacío
+						matriz[vect[i].y][vect[i].x]=' '; //dÃ©jalo vacÃ­o
 					}					
 					vect[i].y-=1;
 					
@@ -267,11 +267,11 @@ void mueveMalos(emplazamiento vect[],char matriz[][ANC],int regist[],int z)
 					
 					if(matriz[vect[i].y][vect[i].x] == 'o') //si vas a una casilla donde hay fruta ( 'o' )
 					{
-						// que quede registrado que el enésimo malo se dirige hacia fruta por medio del vector regist[]
+						// que quede registrado que el enÃ©simo malo se dirige hacia fruta por medio del vector regist[]
 						regist[i]=0;
 					}
-					//Este ciclo se repetirá para cada uno de los malos. 
-					//'Si el malo enésimo se dirige hacia fruta, que quede registrado en la posición enésima del vector regist[]'	
+					//Este ciclo se repetirÃ¡ para cada uno de los malos. 
+					//'Si el malo enÃ©simo se dirige hacia fruta, que quede registrado en la posiciÃ³n enÃ©sima del vector regist[]'	
 				}
 				break;
 			case 2: //abajo
@@ -390,7 +390,7 @@ int aleatorio(int q,int r)
 	
 }
 
-int strdown(int c) //convierte el ASCII de una letra mayÃºscula en su forma minÃºscula
+int strdown(int c) //convierte el ASCII de una letra mayÃƒÂºscula en su forma minÃƒÂºscula
 {
 	int min; 
 	int i='a'-'A'; //i=32
@@ -407,7 +407,7 @@ int comprobante(char matriz[][ANC],char com)
 	{
 		for(n=0;n<ANC;n++)
 		{
-			if(matriz[i][n]== com)	//comprueba si el 'char com' está en alguna celda de la matriz
+			if(matriz[i][n]== com)	//comprueba si el 'char com' estÃ¡ en alguna celda de la matriz
 			{
 				k=0;	
 			}
@@ -425,7 +425,7 @@ int contador(char matriz[][ANC],char k)
 	{
 		for(n=0;n<ANC;n++)
 		{
-			if(matriz[i][n]== k)	/////	cuanta cuantas veces está cierto elemento en la matriz mapa
+			if(matriz[i][n]== k)	/////	cuanta cuantas veces estÃ¡ cierto elemento en la matriz mapa
 			{
 				cont++;	
 			}
@@ -552,7 +552,6 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 				final=0;
 				break;
 			case '2':
-				printf("Accede a las instrucciones \n");
 				instrucciones();
 				final=1;
 				break;
@@ -568,6 +567,8 @@ void menu(int a)  // resume;  opciones:  instrucciones,salir atras
 
 void instrucciones()
 {
+	borrar();
+	printf("Accede a las instrucciones\n");
 	FILE *g;  //declaramos un puntero
 	char x, cad[V];
 	int i=0;
@@ -578,20 +579,30 @@ void instrucciones()
 		exit(-1);
 		
 	}
+	
+	strcpy(cad,"");	//empieza siendo cadena vacÃ­a
+	
 	while(fscanf(g,"%c",&x)!=EOF)	//lectura de cada uno de los elementos del fichero
 	{
 		cad[i]=x;	//almacenamiento de los elementos del fichero en una cadena de caracteres
 		i++;	
 	}
-	printf("%s",cad);	//miprimir por pantalla la cadena de caracteres
+	printf("%s",cad);	//imprimir por pantalla la cadena de caracteres
 	fclose(g);	//cerramos el fichero
+	printf("\nPulse una tecla para continuar\n");
+	while(!kbhit())
+	{
+		
+	}
+	x=getch();	//la almacena aquÃ­ para evitar problemas
+	borrar();
 }
 
 
 void borrar()
 {
-  #ifdef _WIN32  //El símbolo _WIN32 está definido sólo en Windows
-    system("cls");	//sólo se podrá acceder aquí si se compila en Windows
+  #ifdef _WIN32  //El sÃ­mbolo _WIN32 estÃ¡ definido sÃ³lo en Windows
+    system("cls");	//sÃ³lo se podrÃ¡ acceder aquÃ­ si se compila en Windows
   #else		// si NO estamos en Windows
     printf("\033[2J"); //Secuencia de escape para el borrado del terminal y posicionamiento del cursor al principio del mismo
   #endif
@@ -612,7 +623,7 @@ void color(int a)	//funcion para cambiar el color muy parecida a borrar(), utili
 		#ifdef _WIN32
 			system("color F0");
 		#else
-			printf("\033[30m\033[47m");	//color del menú
+			printf("\033[30m\033[47m");	//color del menÃº
 		#endif		
 	}
 	
