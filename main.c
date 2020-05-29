@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
 #include "Funciones.h"
 
 #define N 6 	//cambiante  numero de malos
@@ -14,28 +10,28 @@
 int main(){
 	char x,mat1[AL][ANC]={},mat2[AL][ANC]={},mat3[AL][ANC]={},empezar;
 	int cont = 0,i,n,dir,regist[N],midemapa,teclazos=0,vidas=3;
-	int contador_frutas1,contador_frutas2,contador_frutas3;
-	map_prop temporal;  // almacenarÃ¡ temporalmente lo que deuelvan las funciones loop
+	int contador_frutas1,contador_frutas2,contador_frutas3,u=0;
+	map_prop temporal;  // almacenará temporalmente lo que devuelvan las funciones loop
 	_Bool final=1;//finalizar el bucle while
 	FILE *pf, *pc;
-	emplazamiento pos,malos1,malos2,malos3,malos4,malos5,malos6;
+	emplazamiento pos,malos1,malos2,malos3,malos4,malos5,malos6;	//si se quieren más malos, añadir más variables de malos
     usuario sesion;
 		
 	pf = fopen("fichero.txt","r");
 	if(pf == NULL)
 	{
-		printf("OcurriÃ³ un error y no se pudieron cargar los mapas \n");
+		printf("Tuvo lugar un error y no se pudieron cargar los mapas \n");
 		exit(-1);
 	}	
 	
-	//bucles for anidados para la asignaciÃ³n de cada mapa
+	//bucles for anidados para la asignación de cada mapa
 	
 	for(i=0;i<24;i++)   /// cargar primer mapa
 	{
 		x='v';
 		for(n=0; x!='\n';n++)
 		{
-			x= fgetc(pf);  //este bucle for anidado asigna a nuestra matriz(24x58)vacÃ­a los elementos que hay dentro del fichero.
+			x= fgetc(pf);  //este bucle for anidado asigna a nuestra matriz(24x58)vacía los elementos que hay dentro del fichero.
 			if(x!='\n')
 			{
 				mat1[i][n]=x;	
@@ -80,21 +76,33 @@ int main(){
 	contador_frutas2=contador(mat2,'o');
 	contador_frutas3=contador(mat3,'o');	
 	
-	menu(1);	///////		MENÃš DE INICIO
+	menu(1);	///////		MENU DE INICIO
    
+
+	printf("Escriba su nombre. Tenga en cuenta que si juega con un nombre que ya se ha usado se actualizara atutomaticamente \nsu puntuacion en la clasificacion si se diera el caso de que fuera mayor la que consiguiese \n");
+	do
+	{
+		if(u!=0)
+		{
+			printf("Ha escrito un nombre demasiado largo, tiene que ocupar menos de 20 caracteres\n");
+			printf("Pruebe otra vez\n");
+		}
+		scanf("%s", sesion.nombre);
+		
+		u++;
+	}while(strlen(sesion.nombre)>20);
 	
-	printf("Escriba su nombre. Ten en cuenta que si juegas con un nombre que ya se ha usado se actualizarÃ¡ atutomÃ¡ticamente su puntuaciÃ³n en la clasificaciÃ³n si se diera el caso de que fuera mayor la que consiguiera");
-	scanf("%s", sesion.nombre);
+	printf("Hola %s\n",sesion.nombre);
 	
  	printf("Cargando.");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".");sleep(1);printf(".\n");
-	printf("Solo quedan unos ultimos ajustes, espere un momento\n");sleep(4);	
+	printf("Solo quedan unos ultimos ajustes, espere un momento\n");sleep(3);	
 	printf("Ya esta; pulse cualquiera de las teclas direccionales para empezar \n");
 	
-	while(!kbhit())		// bucle que se ejecutarÃ¡infinitamente hasta que no su pulse alguna de las teclas direccionales
+	while(!kbhit())		// bucle que se ejecutara infinitamente hasta que no su pulse alguna de las teclas direccionales
 	{		
 	}         
 															
-	emplazamiento vect[N]={malos1,malos2,malos3,malos4,malos5,malos6};     //se pueden aÃ±adir mÃ¡s malos aÃ±adiendo mÃ¡s varibles de tipo emplazamiento(llegÃ³ a haber 14)
+	emplazamiento vect[N]={malos1,malos2,malos3,malos4,malos5,malos6};     //se pueden añadir más malos añadiendo más varibles de tipo emplazamiento(llegó a haber 14)
 	
 	midemapa=0;	//empeazamos en el primer mapa
 	
@@ -102,7 +110,7 @@ int main(){
 	
 	final=1;
 	
-	while(vidas!=0 && final)  // este bucle se ejecutarÃ¡ mientras las vidas no lleguen a 0, y mientras la variable final sea 1(esto cambiarÃ¡ cuando se llega al Ãºltimo mapa)
+	while(vidas!=0 && final)  // este bucle se ejecutará mientras las vidas no lleguen a 0, y mientras la variable final sea 1(esto cambiará cuando se llega al último mapa)
 	{		
 		switch(midemapa)
 		{
@@ -113,7 +121,7 @@ int main(){
 					{
 						regist[i]=1; //vector de todo  unos que indica que al principio, los malos estan posicionados sobre casillas en las que no hay frutas
 					}
-					pos.x=28;pos.y=19;dir=77+256;       //posiciÃ³n inicial del bueno
+					pos.x=28;pos.y=19;dir=77+256;       //posición inicial del bueno
 					
 					vect[0].x=2;vect[0].y=6;
 					vect[1].x=5;vect[1].y=6;
@@ -127,11 +135,11 @@ int main(){
 				teclazos += loop(mat1,pos,dir,vect,0,regist,contador_frutas1,&temporal);
 				
 				
-				  // 0 si no se paso el mapa; 1 si sÃ­ lo pasÃ³ 
+				  // 0 si no se paso el mapa; 1 si sí lo pasó 
 				printf("Ha pulsado el teclado %d veces \n",teclazos);
 				printf("Se ha comido %d frutas \n ",temporal.fruta);
 				
-				system("pause");
+				sleep(2);
 				
 				
 				if(temporal.nivel)
@@ -151,8 +159,8 @@ int main(){
 				
 				a++;
 				
-				printf("TE QUEDAN %d VIDAS \n",vidas);
-				sleep(4);
+				printf("VIDAS RESTANTES: %d \n",vidas);
+				sleep(3);
 				
 				
 				break;				
@@ -165,7 +173,7 @@ int main(){
 						regist[i]=1; //vector de todo  unos que indica que al principio, los malos estan posicionados sobre casillas en las que no hay frutas
 					}
 					
-					pos.x=28;pos.y=19;dir=77+256;       //posiciÃ³n inicial del buena
+					pos.x=28;pos.y=19;dir=77+256;       //posición inicial del bueno
 					
 					vect[0].x=17;vect[0].y=9;
 					vect[1].x=19;vect[1].y=9;
@@ -176,7 +184,13 @@ int main(){
 				}
 				
 				teclazos += loop(mat2,pos,dir,vect,0,regist,contador_frutas2,&temporal);
-				  // 0 si no se paso el mapa; 1 si sÃ­ lo pasÃ³ 
+				  // 0 si no se paso el mapa; 1 si sí lo pasó
+				  
+				printf("Ha pulsado el teclado %d veces \n",teclazos);
+				printf("Se ha comido %d frutas \n ",temporal.fruta);
+				
+				sleep(2);
+				
 				
 				if(temporal.nivel)
 				{
@@ -194,6 +208,9 @@ int main(){
 				}
 				
 				b++;
+				
+				printf("VIDAS RESTANTES: %d \n",vidas);
+				sleep(3);
 				
 				break;
 			case 2:
@@ -216,7 +233,12 @@ int main(){
 				} 
 				
 				teclazos += loop(mat3,pos,dir,vect,0,regist,contador_frutas3,&temporal);
-				  // 0 si no se paso el mapa; 1 si sÃ­ lo pasÃ³ 
+				  // 0 si no se paso el mapa; 1 si sí lo pasó 
+				  
+				printf("Ha pulsado el teclado %d veces \n",teclazos);
+				printf("Se ha comido %d frutas \n ",temporal.fruta);
+				
+				sleep(2);
 				
 				if(temporal.nivel)
 				{
@@ -235,8 +257,11 @@ int main(){
 				
 				c++;
 				
+				printf("VIDAS RESTANTES: %d \n",vidas);
+				sleep(3);
+				
 				break;
-			case 3:   // te has pasado el tercer y Ãºltimo mapa
+			case 3:   // te has pasado el tercer y último mapa
 				
 				final=0;
 				
@@ -252,7 +277,7 @@ if(midemapa!=3)
 	printf("Te quedaste sin vidas \n");
 }
 
-printf("Te has pasado %d mapas \n",midemapa);
+printf("Numero de mapas superados: %d \n",midemapa);
 
 printf("Has pulsado %d veces el teclado \n",teclazos);
 
@@ -301,7 +326,7 @@ system("pause");
         {
             puntos=100*contfruta1 + puntmap - 10*teclazos;
         }
-        else (teclazos>300)
+        else
         {
             puntos= puntmap - 10*teclazos;
         }
@@ -325,7 +350,7 @@ system("pause");
         {
             puntos=100*contfruta1 + 100*contfruta2  + 2*puntmap - 10*teclazos;
         }
-        else (teclazos>600)
+        else
         {
         puntos=2*puntmap - 10*teclazos;
         }
@@ -348,15 +373,17 @@ system("pause");
         {
             puntos=100*contfruta1 + 100*contfruta2 + 100*contfruta3 + 3*puntmap - 10*teclazos;
         }
-        else (teclazos>900)
+        else
         {
             puntos=3*puntmap - 10*teclazos;
         }
     }
     
     
-    int u,v,alm,cuantosJugadores=0;
+    int v,cuantosJugadores=0,indiferente; //declaro la u arriba
     char r;
+    
+    sesion.puntuacion=puntos;
     
     pc=fopen("Clasificacion.txt", "r");
     if(pc==NULL)
@@ -367,38 +394,42 @@ system("pause");
    
     while (fscanf(pc,"%c",&r)!=EOF)
     {
-        if(r=='\n') //contamos el nÃºmero de lÃ­neas del fichero 
-            ++cuantosJugadores;
-    }
-    usuario jugador[cuantosJugadores+1];
+        if(r=='\n') //contamos el numero de lineas del fichero 
+        {
+        	cuantosJugadores++;
+		}            
+    }    
+	   
+    usuario jugador[cuantosJugadores+1],alm;
     rewind(pc);
     
-    for(u=0;u<cuantosJugadores;u++)
+    for(u=0;u<cuantosJugadores;u++) 
     {
-        fscanf(pc,"#%i %s, puntuaciÃ³n:%i\n",&(u+1),&jugador[u].nombre,&jugador[u].puntuacion)
+        fscanf(pc,"#%i|%[^,],puntuacion:%i\n",&indiferente,jugador[u].nombre,&jugador[u].puntuacion);
     }
     fclose(pc);
-    int indicador=0;
-   
+    
+    
+    int indicador=0;    //con este indicador sabremos si hay alguna partida registrada con el mismo nombre
     
     for(u=0;u<cuantosJugadores;u++)
     {
-        if(strcmp(sesion.nombre, jugador[u].nombre)==0)
+        if(strcmp(sesion.nombre,jugador[u].nombre)==0)
         {
             indicador=1;
             if(puntos > jugador[u].puntuacion)
             {
                 jugador[u]=sesion;
-            }
-         
-            
+            }            
         }
     }
-   if(indicador==0)
-   {
-       jugador[cuantosJugadores+1]=sesion;
-   }
     
+   if(indicador==0)	//si no hay ninguna partida registrada con el mismo nombre
+   {
+		strcpy(jugador[cuantosJugadores].nombre,sesion.nombre);	//la variable sesión de tipo usuario pasa al último elemento(vacío)del vector 'jugador'
+		jugador[cuantosJugadores].puntuacion=sesion.puntuacion;      
+   }
+        
     
     switch(indicador)
     {
@@ -407,12 +438,11 @@ system("pause");
                {
                    for(v=u+1;v<cuantosJugadores+1;v++)
                    {
-                       if(jugador[u].puntuacion < jugador[v].puntuacion)
-                       
+                       if(jugador[u].puntuacion < jugador[v].puntuacion)                       
                        {
-                       alm=jugador[u];
-                       jugador[u]=jugador[v];
-                       jugador[v]=alm;
+	                       alm=jugador[u];
+	                       jugador[u]=jugador[v];
+	                       jugador[v]=alm;
                        }
                    }
                }
@@ -427,36 +457,54 @@ system("pause");
                        if(jugador[u].puntuacion < jugador[v].puntuacion)
                        
                        {
-                       alm=jugador[u];
-                       jugador[u]=jugador[v];
-                       jugador[v]=alm;
+	                       alm=jugador[u];
+	                       jugador[u]=jugador[v];
+	                       jugador[v]=alm;
                        }
                    }
-               }
-               
-               
+               }               
             break;
     }
-    pc=fopen("Clasificacion.txt", "w");
+    
+    pc=fopen("Clasificacion.txt","w");
     switch(indicador)
     {
         case 0:
             
               for(u=0;u<cuantosJugadores+1;u++)
               {
-                  fprintf(pc,"#%i %s, puntuaciÃ³n:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+                  fprintf(pc,"#%i|%s,puntuacion:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
               }
               
             break;
         case 1:
             for(u=0;u<cuantosJugadores;u++)
             {
-                fprintf(pc,"#%i %s, puntuaciÃ³n:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
+                fprintf(pc,"#%i|%s,puntuacion:%i\n",u+1,jugador[u].nombre,jugador[u].puntuacion);
             }
             
             break;
     }
     fclose(pc);
+    
+    char micadena[cuantosJugadores*40];
+    
+    pc=fopen("Clasificacion.txt","r");
+    if(pc==NULL)
+    {
+    	printf("No se pudo abrir el fichero \n");
+    	exit(-1);
+	}
+	u=0;
+	while(fscanf(pc,"%c",&r)!=EOF)
+	{
+		micadena[u]=r;
+		u++;
+	}
+	borrar();
+	printf("ESTA ES LA CLASIFICACION\n");
+	printf("%s",micadena);
+	
 	
 	
 	return 0;	
