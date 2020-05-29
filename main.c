@@ -163,6 +163,7 @@ int main(){
 				printf("VIDAS RESTANTES: %d \n",vidas);
 				sleep(1);
 				printf("Espere.....\n");
+				printf("Pulsa las teclas direccionales\n");
 				sleep(2);
 				
 				
@@ -215,6 +216,7 @@ int main(){
 				printf("VIDAS RESTANTES: %d \n",vidas);
 				sleep(1);
 				printf("Espere.....\n");
+				printf("Pulsa las teclas direccionales\n");
 				sleep(2);
 				
 				break;
@@ -265,6 +267,7 @@ int main(){
 				printf("VIDAS RESTANTES: %d \n",vidas);
 				sleep(1);
 				printf("Espere.....\n");
+				printf("Pulsa las teclas direccionales\n");
 				sleep(2);
 				
 				break;
@@ -301,7 +304,7 @@ switch(midemapa)
 		break;
 	case 3:
 		printf("Al comerte toda la fruta en el %cltimo mapa, %cte has pasado el juego! \n",163,173);
-		printf("Nuestras mÃ¡s sinceras felicitaciones \n");
+		printf("Nuestras mas sinceras felicitaciones \n");
 		break;
 }
 
