@@ -11,10 +11,10 @@ int main(){
 	char x,mat1[AL][ANC]={},mat2[AL][ANC]={},mat3[AL][ANC]={},empezar;
 	int cont = 0,i,n,dir,regist[N],midemapa,teclazos=0,vidas=3;
 	int contador_frutas1,contador_frutas2,contador_frutas3,u=0;
-	map_prop temporal;  // almacenar· temporalmente lo que devuelvan las funciones loop
+	map_prop temporal;  // almacenar√° temporalmente lo que devuelvan las funciones loop
 	_Bool final=1;//finalizar el bucle while
 	FILE *pf, *pc;
-	emplazamiento pos,malos1,malos2,malos3,malos4,malos5,malos6;	//si se quieren m·s malos, aÒadir m·s variables de malos
+	emplazamiento pos,malos1,malos2,malos3,malos4,malos5,malos6;	//si se quieren m√°s malos, a√±adir m√°s variables de malos
     usuario sesion;
 		
 	pf = fopen("fichero.txt","r");
@@ -24,14 +24,14 @@ int main(){
 		exit(-1);
 	}	
 	
-	//bucles for anidados para la asignaciÛn de cada mapa
+	//bucles for anidados para la asignaci√≥n de cada mapa
 	
 	for(i=0;i<24;i++)   /// cargar primer mapa
 	{
 		x='v';
 		for(n=0; x!='\n';n++)
 		{
-			x= fgetc(pf);  //este bucle for anidado asigna a nuestra matriz(24x58)vacÌa los elementos que hay dentro del fichero.
+			x= fgetc(pf);  //este bucle for anidado asigna a nuestra matriz(24x58)vac√≠a los elementos que hay dentro del fichero.
 			if(x!='\n')
 			{
 				mat1[i][n]=x;	
@@ -102,7 +102,7 @@ int main(){
 	{		
 	}         
 															
-	emplazamiento vect[N]={malos1,malos2,malos3,malos4,malos5,malos6};     //se pueden aÒadir m·s malos aÒadiendo m·s varibles de tipo emplazamiento(llegÛ a haber 14)
+	emplazamiento vect[N]={malos1,malos2,malos3,malos4,malos5,malos6};     //se pueden a√±adir m√°s malos a√±adiendo m√°s varibles de tipo emplazamiento(lleg√≥ a haber 14)
 	
 	midemapa=0;	//empeazamos en el primer mapa
 	
@@ -110,7 +110,7 @@ int main(){
 	
 	final=1;
 	
-	while(vidas!=0 && final)  // este bucle se ejecutar· mientras las vidas no lleguen a 0, y mientras la variable final sea 1(esto cambiar· cuando se llega al ˙ltimo mapa)
+	while(vidas!=0 && final)  // este bucle se ejecutar√° mientras las vidas no lleguen a 0, y mientras la variable final sea 1(esto cambiar√° cuando se llega al √∫ltimo mapa)
 	{		
 		switch(midemapa)
 		{
@@ -121,7 +121,7 @@ int main(){
 					{
 						regist[i]=1; //vector de todo  unos que indica que al principio, los malos estan posicionados sobre casillas en las que no hay frutas
 					}
-					pos.x=28;pos.y=19;dir=77+256;       //posiciÛn inicial del bueno
+					pos.x=28;pos.y=19;dir=77+256;       //posici√≥n inicial del bueno
 					
 					vect[0].x=2;vect[0].y=6;
 					vect[1].x=5;vect[1].y=6;
@@ -135,7 +135,7 @@ int main(){
 				teclazos += loop(mat1,pos,dir,vect,0,regist,contador_frutas1,&temporal);
 				
 				
-				  // 0 si no se paso el mapa; 1 si sÌ lo pasÛ 
+				  // 0 si no se paso el mapa; 1 si s√≠ lo pas√≥ 
 				printf("Ha pulsado el teclado %d veces \n",teclazos);
 				printf("Se ha comido %d frutas \n ",temporal.fruta);
 				
@@ -173,7 +173,7 @@ int main(){
 						regist[i]=1; //vector de todo  unos que indica que al principio, los malos estan posicionados sobre casillas en las que no hay frutas
 					}
 					
-					pos.x=28;pos.y=19;dir=77+256;       //posiciÛn inicial del bueno
+					pos.x=28;pos.y=19;dir=77+256;       //posici√≥n inicial del bueno
 					
 					vect[0].x=17;vect[0].y=9;
 					vect[1].x=19;vect[1].y=9;
@@ -184,7 +184,7 @@ int main(){
 				}
 				
 				teclazos += loop(mat2,pos,dir,vect,0,regist,contador_frutas2,&temporal);
-				  // 0 si no se paso el mapa; 1 si sÌ lo pasÛ
+				  // 0 si no se paso el mapa; 1 si s√≠ lo pas√≥
 				  
 				printf("Ha pulsado el teclado %d veces \n",teclazos);
 				printf("Se ha comido %d frutas \n ",temporal.fruta);
@@ -222,7 +222,7 @@ int main(){
 						regist[i]=1; //vector de todo  unos que indica que al principio, los malos estan posicionados sobre casillas en las que no hay frutas
 					}
 					
-					pos.x=28;pos.y=19;dir=77+256;       //posici√≥n inicial del bueno
+					pos.x=28;pos.y=19;dir=77+256;       //posici√É¬≥n inicial del bueno
 					
 					vect[0].x=32;vect[0].y=8;
 					vect[1].x=34;vect[1].y=8;
@@ -233,7 +233,7 @@ int main(){
 				} 
 				
 				teclazos += loop(mat3,pos,dir,vect,0,regist,contador_frutas3,&temporal);
-				  // 0 si no se paso el mapa; 1 si sÌ lo pasÛ 
+				  // 0 si no se paso el mapa; 1 si s√≠ lo pas√≥ 
 				  
 				printf("Ha pulsado el teclado %d veces \n",teclazos);
 				printf("Se ha comido %d frutas \n ",temporal.fruta);
@@ -261,7 +261,7 @@ int main(){
 				sleep(3);
 				
 				break;
-			case 3:   // te has pasado el tercer y ˙ltimo mapa
+			case 3:   // te has pasado el tercer y √∫ltimo mapa
 				
 				final=0;
 				
@@ -294,7 +294,7 @@ switch(midemapa)
 		break;
 	case 3:
 		printf("Al comerte toda la fruta en el %cltimo mapa, %cte has pasado el juego! \n",163,173);
-		printf("Nuestras m√°s sinceras felicitaciones \n");
+		printf("Nuestras m√É¬°s sinceras felicitaciones \n");
 		break;
 }
 
@@ -426,7 +426,7 @@ system("pause");
     
    if(indicador==0)	//si no hay ninguna partida registrada con el mismo nombre
    {
-		strcpy(jugador[cuantosJugadores].nombre,sesion.nombre);	//la variable sesiÛn de tipo usuario pasa al ˙ltimo elemento(vacÌo)del vector 'jugador'
+		strcpy(jugador[cuantosJugadores].nombre,sesion.nombre);	//la variable sesi√≥n de tipo usuario pasa al √∫ltimo elemento(vac√≠o)del vector 'jugador'
 		jugador[cuantosJugadores].puntuacion=sesion.puntuacion;      
    }
         
@@ -502,7 +502,7 @@ system("pause");
 		u++;
 	}
 	borrar();
-	printf("ESTA ES LA CLASIFICACION\n");
+	printf("ESTA ES LA CLASIFICACI%cN\n",224);
 	printf("%s",micadena);
 	
 	
