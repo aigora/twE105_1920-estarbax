@@ -9,7 +9,6 @@
   los mapas pasados y las frutas comidas en el ultimo mapa
 -La tecla Q sirve para entrar en el menu de pause
 -Una vez pausado tenemos tres opciones:
-  -seguir jugando,  
+  -seguir jugando  
   -ver las instrucciones otra vez 
   -salir del juego
-

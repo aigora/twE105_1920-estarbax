@@ -1,4 +1,7 @@
-#1|eloy_oficial,puntuacion:123456
-#2|laure,puntuacion:3450
-#3|solomiya,puntuacion:850
+#1|josue,puntuacion:146920
+#2|eloy_oficial,puntuacion:123456
+#3|papadopoulos,puntuacion:49870
+#4|laure,puntuacion:3450
+#5|teddy,puntuacion:1750
+#6|solomiya,puntuacion:850
 

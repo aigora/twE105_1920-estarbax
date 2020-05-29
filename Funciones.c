@@ -73,7 +73,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					{
 						printf("Has ganado \n");		
 						p->nivel=1;
-						p->fruta=0;
+						p->fruta=frutas_iniciales;
 						return i;
 					}		
 				}			
@@ -111,7 +111,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					{
 						printf("Has ganado \n");		
 						p->nivel=1;
-						p->fruta=0;
+						p->fruta=frutas_iniciales;
 						return i;
 					}
 				}					
@@ -156,7 +156,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					{
 						printf("Has ganado \n");		
 						p->nivel=1;
-						p->fruta=0;
+						p->fruta=frutas_iniciales;
 						return i;
 					}
 				}
@@ -199,7 +199,7 @@ int loop(char matrix[][ANC],emplazamiento pos,int dir,emplazamiento vect[],int i
 					{
 						printf("Has ganado \n");		
 						p->nivel=1;
-						p->fruta=0;
+						p->fruta=frutas_iniciales;
 						return i;
 					}					
 				}
@@ -587,9 +587,9 @@ void instrucciones()
 		cad[i]=x;	//almacenamiento de los elementos del fichero en una cadena de caracteres
 		i++;	
 	}
-	printf("%s",cad);	//imprimir por pantalla la cadena de caracteres
+	printf("%s\n",cad);	//imprimir por pantalla la cadena de caracteres
 	fclose(g);	//cerramos el fichero
-	printf("\nPulse una tecla para continuar\n");
+	printf("Pulse una tecla para continuar\n");
 	while(!kbhit())
 	{
 		
