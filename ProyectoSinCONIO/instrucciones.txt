@@ -2,7 +2,7 @@
 
 -El juego consta de tres mapas
 -Objetivo: comerse todas las frutas 
--Para moverte utiliza las teclas:W,A,S,D(no importa mayúscula y minúscula)
+-Para moverte utiliza las teclas:W,A,S,D(no importa mayuscula y minuscula)
 -Tu simbolo es la D y el de los enemigos es el #
 -Dispones de tres vidas
 -Si te has quedado sin vidas (has perdido) la puntuacion corresponde a: 
