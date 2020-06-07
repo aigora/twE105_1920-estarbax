@@ -1,0 +1,9 @@
+#1|josue,puntuacion:146920
+#2|elena,puntuacion:146090
+#3|eloy_oficial,puntuacion:123456
+#4|papadopoulos,puntuacion:49870
+#5|resetti,puntuacion:5000
+#6|laure,puntuacion:3450
+#7|teddy,puntuacion:1750
+#8|solomiya,puntuacion:850
+
